@@ -13,7 +13,7 @@ class User {
             val user = User()
             user.name = jsonObject.getString("name")
             user.screenName = jsonObject.getString("screen_name")
-            user.publicImageUrl = jsonObject.getString(" profile_image_url_https")
+            user.publicImageUrl = jsonObject.getString("profile_image_url_https")
 
             return user
         }

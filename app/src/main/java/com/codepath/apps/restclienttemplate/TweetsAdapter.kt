@@ -1,19 +1,35 @@
 package com.codepath.apps.restclienttemplate
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.codepath.apps.restclienttemplate.models.Tweet
 
 class TweetsAdapter(val tweets:List<Tweet>) : RecyclerView.Adapter<TweetsAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TweetsAdapter.ViewHolder {
-        TODO("Not yet implemented")
+        val context = parent.context
+        val inflater = LayoutInflater.from(context)
+
+        // Inflate our item layout
+        val view = inflater.inflate(R.layout.item_tweet, parent, false)
+
+        return ViewHolder(view)
     }
 
+    // Populating data into the item through holder
     override fun onBindViewHolder(holder: TweetsAdapter.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        // Get data model based n the position
+        val tweet: Tweet = tweets.get(position)
+
+        // Set item views based on the views and data model
+        holder.tvUserName.text = tweet.user?.name
+        holder.tvTweetBody.text = tweet.body
+
+        Glide.with(holder.itemView).load(tweet.user?.publicImageUrl).into(holder.ivProfileImage)
     }
 
     override fun getItemCount(): Int {
