@@ -2,6 +2,7 @@ package com.codepath.apps.restclienttemplate
 
 import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import com.codepath.apps.restclienttemplate.models.SampleModel
@@ -33,11 +34,14 @@ class LoginActivity : OAuthLoginActionBarActivity<TwitterClient>() {
     override fun onLoginSuccess() {
         // val i = Intent(this, PhotosActivity::class.java)
         // startActivity(i)
+
+        Log.i("Caren", "Logged in successfully!")
     }
 
     // OAuth authentication flow failed, handle the error
     // i.e Display an error dialog or toast
     override fun onLoginFailure(e: Exception) {
+        Log.i("Caren", "Login failed.")
         e.printStackTrace()
     }
 

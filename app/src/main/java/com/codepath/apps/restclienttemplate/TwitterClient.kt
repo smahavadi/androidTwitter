@@ -4,8 +4,7 @@ import android.content.Context
 import com.codepath.asynchttpclient.RequestParams
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import com.codepath.oauth.OAuthBaseClient
-import com.github.scribejava.apis.FlickrApi
-import com.github.scribejava.core.builder.api.BaseApi
+import com.github.scribejava.apis.TwitterApi
 
 /*
  *
@@ -31,9 +30,9 @@ class TwitterClient(context: Context) : OAuthBaseClient(
 ) {
 
     companion object {
-        val REST_API_INSTANCE = FlickrApi.instance(FlickrApi.FlickrPerm.WRITE) // Change this
+        val REST_API_INSTANCE = TwitterApi.instance() // calling Twitter API
 
-        const val REST_URL = "https://api.flickr.com/services" // Change this, base API URL
+        const val REST_URL = "https://api.twitter.com/1.1" // Twitter base API URL
 
         const val REST_CONSUMER_KEY =
             BuildConfig.CONSUMER_KEY // Change this inside apikey.properties
