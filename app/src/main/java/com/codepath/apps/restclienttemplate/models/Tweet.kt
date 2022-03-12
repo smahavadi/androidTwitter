@@ -2,8 +2,13 @@ package com.codepath.apps.restclienttemplate.models
 
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.collections.ArrayList
 
 class Tweet {
+
+    fun getFormattedTimestamp(createdAt: String): String {
+        return TimeFormatter.getTimeDifference(createdAt)
+    }
 
     var body: String = ""
     var createdAt: String = ""
@@ -25,6 +30,7 @@ class Tweet {
             }
             return tweets
         }
+
     }
 
 }
