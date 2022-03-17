@@ -1,8 +1,12 @@
 package com.codepath.apps.restclienttemplate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -50,6 +54,21 @@ class TimelineActivity : AppCompatActivity() {
         populateHomeTimeline()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    // Handles click on menu item
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.compose) {
+            // Navigate to compose screen
+            val intent = Intent(this, ComposeActivity:: class.java)
+            startActivityForResult(intent, REQUEST_CODE)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     fun populateHomeTimeline(){
         client.getHomeTimeline(object : JsonHttpResponseHandler(){
 
@@ -73,7 +92,7 @@ class TimelineActivity : AppCompatActivity() {
 
             }
 
-            override fun onFailure(
+            override fun onFailure (
                 statusCode: Int,
                 headers: Headers?,
                 response: String?,
@@ -88,6 +107,7 @@ class TimelineActivity : AppCompatActivity() {
 
     companion object {
         val TAG = "TimelineActivity"
+        val REQUEST_CODE = 10
     }
 
 }
