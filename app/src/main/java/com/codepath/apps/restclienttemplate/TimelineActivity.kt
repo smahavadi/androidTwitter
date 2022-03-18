@@ -69,6 +69,22 @@ class TimelineActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    // method is called when we come back from ComposeActivity
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        // REQUEST_CODE is defined above
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
+            // getting data from intent (tweet)
+            val tweet = data?.getParcelableExtra("tweet") as Tweet
+            // update timeline
+            // modifying data source of tweets
+            tweets.add(0,tweet)
+            // update adapter
+            adapter.notifyItemInserted(0)
+            rvTweets.smoothScrollToPosition(0)
+        }
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
     fun populateHomeTimeline(){
         client.getHomeTimeline(object : JsonHttpResponseHandler(){
 

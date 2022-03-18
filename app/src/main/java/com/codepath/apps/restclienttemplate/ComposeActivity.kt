@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -45,6 +46,11 @@ class ComposeActivity : AppCompatActivity() {
                             Log.i(TAG, "Successfully published tweet!")
                             // send tweet back to TimelineActivity
                             val tweet = Tweet.fromJson(json.jsonObject)
+
+                            val intent = Intent()
+                            intent.putExtra("tweet", tweet)
+                            setResult(RESULT_OK, intent)
+                            finish()
                         }
 
                         override fun onFailure(
