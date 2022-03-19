@@ -49,6 +49,7 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 ![Twitter1](/gifs/twitter1.gif)
+![Twitter2](/gifs/twitterp2.gif)
 
 ## Notes
 
